@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
 """ Simple helper function """
 from typing import Tuple
+import csv
+from typing import List
+import math
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """ Simple helper function """
     return ((page - 1) * page_size, page * page_size)
-
-
-
-import csv
-from typing import List
-import math
-
 
 
 class Server:
@@ -35,14 +31,14 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """ Retrieve a specific page from dataset """
-            assert isinstance(page, int) and page > 0, "page should be a positive integer"
-            assert isinstance(page_size, int) and page_size > 0, "page_size should be a positive integer"
+        """ Retrieve a specific page from dataset """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
-            start, end = index_range(page, page_size)
-            dataset = self.dataset()
+        start, end = index_range(page, page_size)
+        dataset = self.dataset()
 
-            if start >= len(dataset):
-                return [] # If the start index is greater or equal to the
-            else:
-                return dataset[start:end]
+        if start >= len(dataset):
+            return []  # If the start index is greater or equal to the
+        else:
+            return dataset[start:end]
