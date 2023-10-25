@@ -12,10 +12,13 @@ class LRUCache(BaseCaching):
         self.queue = []
 
     def put(self, key, item):
-        """remove least recently used element if full and put new item from down"""
+        """remove least recently used eleement """
         if key and item:
             if key in self.cache_data:
+                self.cache_data[key] = item
                 self.queue.remove(key)
+                self.queue.append(key)
+                return
             elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 discard = self.queue.pop(0)
                 del self.cache_data[discard]
@@ -26,7 +29,5 @@ class LRUCache(BaseCaching):
     def get(self, key):
         """return the value linked to the key"""
         if key in self.cache_data:
-            self.queue.remove(key)
-            self.queue.append(key)
             return self.cache_data[key]
         return None
