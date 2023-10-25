@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
-    """LFUCache class"""
+    """LFUCache class with LRU algorithm"""
 
     def __init__(self):
         """constructor"""
@@ -17,6 +17,8 @@ class LFUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self.cache_data[key] = item
+                self.queue.remove(key)
+                self.queue.append(key)
                 self.count[key] += 1
                 return
             elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
@@ -31,8 +33,8 @@ class LFUCache(BaseCaching):
     def get(self, key):
         """return the value linked to the key"""
         if key in self.cache_data:
-            self.count[key] += 1
             self.queue.remove(key)
             self.queue.append(key)
+            self.count[key] += 1
             return self.cache_data[key]
         return None
