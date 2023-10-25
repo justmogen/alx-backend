@@ -15,7 +15,7 @@ class LIFOCache(BaseCaching):
         """remove last element if full and put new item from down"""
         if key and item:
             if key in self.cache_data:
-                self.queue.remove(key)
+                self.cache_data[key] = item
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 discard = self.queue.pop()
                 del self.cache_data[discard]
