@@ -16,8 +16,6 @@ class LRUCache(BaseCaching):
         if key and item:
             if key in self.cache_data:
                 self.cache_data[key] = item
-                self.queue.remove(key)
-                self.queue.append(key)
                 return
             elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 discard = self.queue.pop(0)
@@ -29,5 +27,7 @@ class LRUCache(BaseCaching):
     def get(self, key):
         """return the value linked to the key"""
         if key in self.cache_data:
+            self.queue.remove(key)
+            self.queue.append(key)
             return self.cache_data[key]
         return None
