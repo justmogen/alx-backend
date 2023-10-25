@@ -24,7 +24,8 @@ class LFUCache(BaseCaching):
                     # Evict the least frequently used item(s)
                     min_frequency = min(self.frequencies.values())
                     keys_to_remove = [
-                        k for k, v in self.frequencies.items() if v == min_frequency]
+                        k for k, v in self.frequencies.items()
+                        if v == min_frequency]
                     # Remove the first item that was least frequently used
                     discard = keys_to_remove[0]
                     del self.cache_data[discard]
