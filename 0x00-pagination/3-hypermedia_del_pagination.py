@@ -40,24 +40,24 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> dict:
-        """ Get hyper index """
-        assert isinstance(index, int) and index >= 0
-        assert isinstance(page_size, int) and page_size > 0
+        """ Retrieve info about a specific page from a given index 
+            and with a specific size 
+         """
+        data = self.indexed_dataset()
+        assert index is not None and  0 <= index <= max(data.keys())
 
-        indexed_dataset = self.indexed_dataset()
-        assert index < len(indexed_dataset)
-
-        data = []
-        next_index = index
-        for _ in range(page_size):
-            while not indexed_dataset.get(next_index):
-                next_index += 1
-            data.append(indexed_dataset[next_index])
-            next_index += 1
+        page_data = []
+        next_index = None
+        for i, item in data.items():
+            if i >= index:
+                page_data.append(item)
+                if len(page_data) >= page_size:
+                    next_index = i 
+                    break
 
         return {
             'index': index,
-            'next_index': next_index,
-            'page_size': len(data),
-            'data': data
+            'data': page_data,
+            'page_size': len(page_data),
+            'next_index': next_index
         }
