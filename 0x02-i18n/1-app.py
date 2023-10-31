@@ -6,20 +6,21 @@ from config import Config
 
 
 app = Flask(__name__)
-app.config.from_object(Config) # Config class for app.config
-babel = Babel(app) # Babel instance for babel
+app.config.from_object(Config)  # Config class for app.config
+babel = Babel(app)  # Babel instance for babel
+
 
 @babel.localeselector
 def get_locale():
     """ Get locale language """
-    return 'fr'
+    return 'en'
+
 
 @app.route('/')
 def index():
     """ Index page """
     return render_template('1-index.html')
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-
