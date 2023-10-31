@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""  Get locale from request"""
+""" Route module for the API - Basic Babel setup """
 
 
 from flask import Flask, request, render_template
 from flask_babel import Babel
 from config import Config
-
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -21,11 +20,5 @@ def index() -> str:
     return render_template('1-index.html')
 
 
-@babel.localeselector
-def get_locale() -> str:
-    """ Get / index.html """
-    return render_template('1-index.html')
-
-
 if __name__ == "__main__":
-    run(debug=True)
+    app.run(debug=True)
