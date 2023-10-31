@@ -16,8 +16,8 @@ def get_locale():
     return 'en'
 
 
-@app.route('/')
-def index():
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index() -> str:
     """ Index page """
     return render_template('1-index.html')
 
