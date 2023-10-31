@@ -1,5 +1,5 @@
 class Config:
     """ Config class """
-    Languages = ["en", "fr"]
+    LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
