@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" force a particular locale with locale=fr parameter 
+""" force a particular locale with locale=fr parameter
     in the URL
 """
 from flask import Flask, render_template, request
