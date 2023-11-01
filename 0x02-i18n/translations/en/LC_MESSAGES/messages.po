@@ -4,13 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid "home_title"
-msgstr "Welcome to Holbertoni"
+msgstr "Welcome to Holberton"
 msgid "home_header"
-msgstr ""Hello world!"
+msgstr "Hello world!"
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-31 17:13+0300\n"
-"PO-Revision-Date: 2023-10-31 17:13+0300\n"
+"POT-Creation-Date: 2023-11-01 11:55+0300\n"
+"PO-Revision-Date: 2023-11-01 11:55+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
